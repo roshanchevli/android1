@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         binding.btnlogout.setOnClickListener {
             AuthUI.getInstance().signOut(this)
                 .addOnCompleteListener {
