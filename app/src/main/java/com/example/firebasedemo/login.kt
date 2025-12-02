@@ -1,7 +1,9 @@
 package com.example.firebasedemo
 
+import android.app.ComponentCaller
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,17 +34,25 @@ class login : AppCompatActivity() {
         startActivityForResult(signinIntent,100)
 
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode==100) {
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            if (resultCode == RESULT_OK) {
-                if (currentUser != null) {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
+        if(requestCode == 100){
+            if(resultCode == RESULT_OK){
+                val intent= Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            else{
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 }
+
+
+
+
+

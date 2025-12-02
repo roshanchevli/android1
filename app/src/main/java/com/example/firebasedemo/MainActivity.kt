@@ -2,11 +2,14 @@ package com.example.firebasedemo
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.firebasedemo.databinding.ActivityMainBinding
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -24,12 +27,49 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.tvname.text = FirebaseAuth.getInstance().currentUser?.displayName
-        binding.tvemail.text = FirebaseAuth.getInstance().currentUser?.email
+
+
         binding.btnlogout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, login::class.java)
+            AuthUI.getInstance().signOut(this)
+                .addOnCompleteListener {
+                    val intent= Intent(this, login::class.java)
+                    startActivity(intent)
+                    finish()
+                    Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
+                }
+        }
+
+      val currentUser= FirebaseAuth.getInstance().currentUser
+        if(currentUser == null){
+            val intent= Intent(this, login::class.java)
             startActivity(intent)
+            finish()
+
+        }
+
+        if(currentUser!=null){
+            binding.tvname.text =  currentUser.displayName
+            binding.tvemail.text =currentUser.email
+
+            val photourl=currentUser.photoUrl
+
+            if(photourl!=null){
+                Glide.with(this).load(photourl).into(binding.profileImage);
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
