@@ -41,7 +41,6 @@ class login : AppCompatActivity() {
                 if (currentUser != null) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    //roshan chevli
                 }
             }
         }
