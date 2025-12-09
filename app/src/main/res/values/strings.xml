@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">firebase demo</string>
+    <string name="facebook_app_id">894712596214324</string>
+    <string name="fb_login_protocol_scheme">fb894712596214324</string>
+    <string name="facebook_client_token">cfe2a390c73172c157d906cbe2749541</string>
 </resources>
