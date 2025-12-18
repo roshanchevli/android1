@@ -38,25 +38,25 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
                 }
         }
-//
-//      val currentUser= FirebaseAuth.getInstance().currentUser
-//        if(currentUser == null){
-//            val intent= Intent(this, login::class.java)
-//            startActivity(intent)
-//            finish()
-//
-//        }
 
-//        if(currentUser!=null){
-//            binding.tvname.text =  currentUser.displayName
-//            binding.tvemail.text =currentUser.email
-//
-//            val photourl=currentUser.photoUrl
-//
-//            if(photourl!=null){
-//                Glide.with(this).load(photourl).into(binding.profileImage);
-//            }
-//        }
+      val currentUser= FirebaseAuth.getInstance().currentUser
+        if(currentUser == null){
+            val intent= Intent(this, login::class.java)
+            startActivity(intent)
+            finish()
+
+        }
+
+        if(currentUser!=null){
+            binding.tvname.text =  currentUser.displayName
+            binding.tvemail.text =currentUser.email
+
+            val photourl=currentUser.photoUrl
+
+            if(photourl!=null){
+                Glide.with(this).load(photourl).into(binding.profileImage);
+            }
+        }
 
         binding.btnlogout2.setOnClickListener {
             val ref = FirebaseDatabase.getInstance().getReference(ConstantData.MESSAGE_REFERENCE)
@@ -70,22 +70,28 @@ class MainActivity : AppCompatActivity() {
             ConstantData().print("Data Added", this)
 
         }
-        binding.btnlogout4.setOnClickListener {
-            val ref= FirebaseDatabase.getInstance().getReference(ConstantData.USER_REFERENCE)
-            val user= UserModel(
-                name="roshan",
-                email="james.c.mcreynolds@example-pet-store.com",
-                password="123",
-                mobileno="1234567890"
-            )
 
-            ref.child("user1").setValue(user)
-                .addOnSuccessListener {
-                    ConstantData().print("Data Added", this)
-                }
-                .addOnFailureListener {
-                    ConstantData().print("Data Not Added", this)
-                }
+
+        binding.btnlogout4.setOnClickListener {
+//            val ref= FirebaseDatabase.getInstance().getReference(ConstantData.USER_REFERENCE)
+//            val user= UserModel(
+//                name="roshan",
+//                email="james.c.mcreynolds@example-pet-store.com",
+//                password="123",
+//                mobileno="1234567890"
+//            )
+//
+//            ref.child("user1").setValue(user)
+//                .addOnSuccessListener {
+//                    ConstantData().print("Data Added", this)
+//                }
+//                .addOnFailureListener {
+//                    ConstantData().print("Data Not Added", this)
+//                }
+
+            val intent= Intent(this, UserAddActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
