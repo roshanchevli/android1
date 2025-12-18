@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "886532665008",
+    "firebase_url": "https://fir-demo-9f5cb-default-rtdb.firebaseio.com",
     "project_id": "fir-demo-9f5cb",
     "storage_bucket": "fir-demo-9f5cb.firebasestorage.app"
   },

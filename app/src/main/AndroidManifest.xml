@@ -16,7 +16,11 @@
 
 
 
-
+        <meta-data
+            android:name="com.facebook.sdk.facebook_application_id"
+            android:value="@string/facebook_app_id"
+            tools:replace="android:value"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
 
 
         <activity

@@ -10,6 +10,7 @@
     tools:context=".MainActivity">
 
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="96dp"
@@ -47,4 +48,10 @@
         android:layout_height="wrap_content"
         android:text="logout"
     />
+    <Button
+        android:id="@+id/btnlogout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add data" />
+
 </LinearLayout>

@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.firebasedemo.databinding.ActivityMainBinding
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,24 +38,30 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Logout Successfully", Toast.LENGTH_SHORT).show()
                 }
         }
+//
+//      val currentUser= FirebaseAuth.getInstance().currentUser
+//        if(currentUser == null){
+//            val intent= Intent(this, login::class.java)
+//            startActivity(intent)
+//            finish()
+//
+//        }
 
-      val currentUser= FirebaseAuth.getInstance().currentUser
-        if(currentUser == null){
-            val intent= Intent(this, login::class.java)
-            startActivity(intent)
-            finish()
+//        if(currentUser!=null){
+//            binding.tvname.text =  currentUser.displayName
+//            binding.tvemail.text =currentUser.email
+//
+//            val photourl=currentUser.photoUrl
+//
+//            if(photourl!=null){
+//                Glide.with(this).load(photourl).into(binding.profileImage);
+//            }
+//        }
 
-        }
-
-        if(currentUser!=null){
-            binding.tvname.text =  currentUser.displayName
-            binding.tvemail.text =currentUser.email
-
-            val photourl=currentUser.photoUrl
-
-            if(photourl!=null){
-                Glide.with(this).load(photourl).into(binding.profileImage);
-            }
+        binding.btnlogout2.setOnClickListener {
+            val ref = FirebaseDatabase.getInstance().getReference(ConstantData.MESSAGE_REFERENCE)
+            ref.setValue("Hello World")
+            Toast.makeText(this, "Data Added", Toast.LENGTH_SHORT).show()
         }
     }
 }
