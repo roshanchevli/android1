@@ -53,5 +53,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add data" />
+    <Button
+        android:id="@+id/btnlogout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add data with child node" />
+    <Button
+        android:id="@+id/btnlogout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add user" />
 
 </LinearLayout>

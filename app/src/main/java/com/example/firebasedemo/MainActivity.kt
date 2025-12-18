@@ -63,6 +63,30 @@ class MainActivity : AppCompatActivity() {
             ref.setValue("Hello World")
             Toast.makeText(this, "Data Added", Toast.LENGTH_SHORT).show()
         }
+
+        binding.btnlogout3.setOnClickListener {
+            val ref= FirebaseDatabase.getInstance().getReference(ConstantData.MESSAGE_REFERENCE)
+            ref.child("user").setValue("roshan")
+            ConstantData().print("Data Added", this)
+
+        }
+        binding.btnlogout4.setOnClickListener {
+            val ref= FirebaseDatabase.getInstance().getReference(ConstantData.USER_REFERENCE)
+            val user= UserModel(
+                name="roshan",
+                email="james.c.mcreynolds@example-pet-store.com",
+                password="123",
+                mobileno="1234567890"
+            )
+
+            ref.child("user1").setValue(user)
+                .addOnSuccessListener {
+                    ConstantData().print("Data Added", this)
+                }
+                .addOnFailureListener {
+                    ConstantData().print("Data Not Added", this)
+                }
+        }
     }
 }
 

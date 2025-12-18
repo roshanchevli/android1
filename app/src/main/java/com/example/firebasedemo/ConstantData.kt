@@ -7,6 +7,7 @@ import android.widget.Toast
 class ConstantData {
     companion object{
         const val MESSAGE_REFERENCE="message"
+        const val USER_REFERENCE="user"
 
     }
     fun print(text: String, context: Context){
