@@ -93,6 +93,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        binding.btnlogout5.setOnClickListener {
+            val intent= Intent(this, Push_user::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
 
