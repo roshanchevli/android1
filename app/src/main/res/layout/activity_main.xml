@@ -74,4 +74,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add student" />
+    <Button
+        android:id="@+id/btnlogout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="read message data" />
+    <Button
+        android:id="@+id/btnlogout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="read user data" />
+    <Button
+        android:id="@+id/btnlogout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="read user data with child node" />
 </LinearLayout>
