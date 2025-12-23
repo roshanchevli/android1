@@ -98,6 +98,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        binding.btnlogout6.setOnClickListener {
+            val intent= Intent(this, StudentDetails::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
 
