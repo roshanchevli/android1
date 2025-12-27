@@ -159,6 +159,11 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+        binding.btnlogout10.setOnClickListener {
+            val intent = Intent(this, Student_show_activity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
 
