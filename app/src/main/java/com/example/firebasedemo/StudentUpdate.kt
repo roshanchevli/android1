@@ -5,16 +5,28 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.firebasedemo.databinding.ActivityStudentUpdateBinding
+import com.example.firebasedemo.databinding.ActivityUserAddBinding
 
 class StudentUpdate : AppCompatActivity() {
+    private lateinit var binding: ActivityStudentUpdateBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityStudentUpdateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         enableEdgeToEdge()
-        setContentView(R.layout.activity_student_update)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val student = intent.getSerializableExtra("student") as StudentModel
+        binding.etRollNo.setText(student.rollno)
+        binding.etName.setText(student.name)
+        binding.etEmail.setText(student.email)
+        binding.etMobile.setText(student.phoneno)
+
     }
 }

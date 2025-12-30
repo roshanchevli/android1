@@ -1,4 +1,5 @@
 package com.example.firebasedemo.adapter
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasedemo.ConstantData
 import com.example.firebasedemo.R
 import com.example.firebasedemo.StudentModel
+import com.example.firebasedemo.StudentUpdate
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -38,7 +40,9 @@ class StudentAdapter(
         val ref = FirebaseDatabase.getInstance().getReference(ConstantData.STUDENT_REFERENCE)
 
         holder.btnupdate.setOnClickListener {
-
+            val intent= Intent(holder.itemView.context, StudentUpdate::class.java)
+            intent.putExtra("student", studentModel)
+            holder.itemView.context.startActivity(intent)
         }
 
         holder.btndelete.setOnClickListener {
@@ -46,7 +50,6 @@ class StudentAdapter(
                 .addOnSuccessListener {
                     val position = holder.adapterPosition
                     studentList.removeAt(position)
-
                     notifyItemRemoved(position)
                     notifyItemRangeChanged(position, studentList.size)
                     ConstantData().print("Student Deleted", holder.itemView.context)
