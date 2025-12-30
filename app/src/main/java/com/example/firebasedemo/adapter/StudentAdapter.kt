@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firebasedemo.ConstantData
 import com.example.firebasedemo.R
 import com.example.firebasedemo.StudentModel
+import com.google.firebase.database.FirebaseDatabase
 
 
 //=================== write Adapter after colon======================
@@ -33,12 +35,25 @@ class StudentAdapter(
         holder.tvemail.text = studentModel.email
         holder.tvphoneno.text = studentModel.phoneno
 
+        val ref = FirebaseDatabase.getInstance().getReference(ConstantData.STUDENT_REFERENCE)
+
         holder.btnupdate.setOnClickListener {
 
         }
 
         holder.btndelete.setOnClickListener {
+            ref.child(studentModel.id!!).removeValue()
+                .addOnSuccessListener {
+                    val position = holder.adapterPosition
+                    studentList.removeAt(position)
 
+                    notifyItemRemoved(position)
+                    notifyItemRangeChanged(position, studentList.size)
+                    ConstantData().print("Student Deleted", holder.itemView.context)
+                }
+                .addOnFailureListener {
+                    ConstantData().print("Student Not Deleted", holder.itemView.context)
+                }
         }
     }
 
@@ -51,7 +66,7 @@ class StudentAdapter(
         var tvrollno: TextView = itemView.findViewById(R.id.tvRollNumber)
         var tvemail: TextView = itemView.findViewById(R.id.tvemail)
         var tvphoneno: TextView = itemView.findViewById(R.id.tvMobileNo)
-        var btnupdate: Button=itemView.findViewById(R.id.btnUpdate)
-        var btndelete: Button=itemView.findViewById(R.id.btnDelete)
+        var btnupdate: Button = itemView.findViewById(R.id.btnUpdate)
+        var btndelete: Button = itemView.findViewById(R.id.btnDelete)
     }
 }

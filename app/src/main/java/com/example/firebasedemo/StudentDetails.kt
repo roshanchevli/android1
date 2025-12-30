@@ -24,12 +24,13 @@ class StudentDetails : AppCompatActivity() {
 
             val ref= FirebaseDatabase.getInstance().getReference(ConstantData.STUDENT_REFERENCE)
             val student= StudentModel(
+                id=ref.push().key.toString(),
                 binding.etStudentName.text.toString(),
                 binding.etRollNo.text.toString(),
                 binding.etEmail.text.toString(),
                 binding.etMobileNo.text.toString()
             )
-            ref.push().setValue(student)
+            ref.child(student.id!!).setValue(student)
                 .addOnSuccessListener {
                     ConstantData().print("Student Added", this)
                 }
