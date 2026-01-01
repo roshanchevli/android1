@@ -10,6 +10,7 @@ import com.example.firebasedemo.ConstantData
 import com.example.firebasedemo.R
 import com.example.firebasedemo.StudentModel
 import com.example.firebasedemo.StudentUpdate
+import com.example.firebasedemo.Student_show_activity
 import com.google.firebase.database.FirebaseDatabase
 
 
@@ -43,6 +44,7 @@ class StudentAdapter(
             val intent= Intent(holder.itemView.context, StudentUpdate::class.java)
             intent.putExtra("student", studentModel)
             holder.itemView.context.startActivity(intent)
+            (holder.itemView.context as Student_show_activity).finish()
         }
 
         holder.btndelete.setOnClickListener {
